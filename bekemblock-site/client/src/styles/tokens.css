@@ -1,0 +1,48 @@
+/* Палитра снята с логотипа: белый #FBFBFB, серый #97989C, голубой #009EDD,
+   красный #EE353B. Светлый цех: бумага, графитовый текст, один тёплый предмет
+   в кадре — сам блок. */
+:root {
+  color-scheme: light;
+
+  --paper:   #fbfbf9;
+  --surface: #ffffff;
+  --sunken:  #f1f2f4;
+  --raised:  #ffffff;
+  --line:      #d7dade;
+  --line-soft: #e8eaed;
+
+  --text:  #1f232c;
+  --muted: #5c616b;
+  --dim:   #97989c;
+
+  /* голубой логотипа хорош как свет и графика, но на бумаге не читается текстом,
+     поэтому для надписей и ссылок берём его затемнённый вариант */
+  --accent:        #0b7fb0;
+  --accent-bright: #009edd;
+  --accent-deep:   #0f3b6d;
+  --accent-dim:    rgba(0, 158, 221, 0.1);
+  --brand-red:     #ee353b;
+
+  --stone: #f3f2ee;
+  --raw:   #8e9a86;
+
+  /* Unbounded — широкий геометрический гротеск, в нём заголовок читается как
+     маркировка на самом блоке. Onest — спокойный текст рядом. */
+  --display: "Unbounded", "Onest", system-ui, sans-serif;
+  --body:    "Onest", system-ui, -apple-system, sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --step--1: 0.8125rem;
+  --step-0:  1rem;
+  --step-1:  1.1875rem;
+  --step-2:  1.5rem;
+  --step-3:  1.75rem;
+  --step-4:  2.5rem;
+  --step-5:  clamp(2.1rem, 4.2vw, 3.6rem);
+
+  --gut: clamp(1.25rem, 4vw, 3.5rem);
+  --rail: 3.5rem;
+
+  --shadow-panel: 0 18px 44px rgba(31, 35, 44, 0.1);
+  --shadow-card:  0 2px 10px rgba(31, 35, 44, 0.05);
+}

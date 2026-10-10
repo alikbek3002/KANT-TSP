@@ -1,0 +1,68 @@
+.callouts { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+.callouts__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.callouts__line {
+  fill: none;
+  stroke: var(--accent-bright);
+  stroke-width: 1.25;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.callouts__dot {
+  fill: var(--paper);
+  stroke: var(--accent-bright);
+  stroke-width: 1.5;
+  opacity: 0;
+}
+
+/* Подпись стоит в точке, куда приходит линия. Заголовок лежит на линии,
+   как маркировка на чертеже; пояснение — под ней. transform ставит JS. */
+.callout {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 15rem;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+.callout > * { pointer-events: auto; }
+
+.callout--right { align-items: flex-start; text-align: left; padding-left: 0.4rem; margin-top: -1.35rem; }
+.callout--left { align-items: flex-end; text-align: right; margin-left: -15rem; padding-right: 0.4rem; margin-top: -1.35rem; }
+.callout--up { align-items: center; text-align: center; margin-left: -7.5rem; margin-top: -1.35rem; }
+.callout--dim { align-items: center; text-align: center; margin-left: -7.5rem; margin-top: -0.6rem; gap: 0; }
+
+.callout__title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 0.78rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  white-space: nowrap;
+}
+.callout--dim .callout__title { font-family: var(--mono); color: var(--accent); font-size: var(--step--1); }
+
+.callout__text {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 14rem;
+}
+
+.callout__link { display: flex; flex-direction: column; gap: 0.35rem; align-items: inherit; }
+.callout__link:hover .callout__title { color: var(--accent); }

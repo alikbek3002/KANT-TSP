@@ -1,0 +1,24 @@
+.viewer {
+  margin: 0;
+  width: 100%;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(0, 158, 221, 0.09), transparent 64%),
+    var(--sunken);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer__canvas {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: block;
+}
+
+.viewer__hint {
+  font-size: var(--step--1);
+  color: var(--dim);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--line-soft);
+}

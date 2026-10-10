@@ -1,0 +1,134 @@
+/* Трек прокрутки: блок стоит на месте, мимо него проходят главы. Текста в потоке
+   почти нет — подписи живут на выносках из самого блока. */
+.track {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.chap {
+  min-height: 100svh;
+  padding-inline: var(--gut);
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+
+/* 01 — герой */
+.chap--hero {
+  /* шапка липкая и занимает поток: первый экран считаем без неё, иначе кнопки уходят за низ */
+  min-height: calc(100svh - 68px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: 5.75rem 2.25rem;
+}
+
+.hero {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.9rem;
+  animation: hero-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: 0.5s;
+}
+.hero__title { font-size: var(--step-5); max-width: 18ch; }
+
+.hero__foot {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  animation: hero-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: 0.9s;
+}
+.hero__lede { color: var(--muted); max-width: 46ch; font-size: var(--step-0); }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Главы с контентом внизу экрана: под блоком */
+.chap--foot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  /* низ главы выше телеметрии и рейки; шапка липкая и добавляет 68px */
+  padding-bottom: 7.5rem;
+}
+.chap--foot > * { pointer-events: auto; }
+
+/* 04 — плотности как строка ссылок */
+.densities {
+  display: flex;
+  gap: 2.5rem;
+  font-size: var(--step--1);
+}
+.densities__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 0.6rem;
+  min-width: 9rem;
+  transition: color 0.18s, border-color 0.18s;
+}
+.densities__item b { color: var(--text); font-size: var(--step-1); font-weight: 500; }
+.densities__item:hover { color: var(--accent); border-top-color: var(--accent); }
+
+.plant__note { color: var(--muted); text-align: center; max-width: 52ch; font-size: var(--step--1); }
+
+/* 06 — форма под блоком */
+.contact {
+  width: min(100%, 26rem);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-panel);
+  padding: 1.4rem;
+}
+
+/* Клиенты — вне сцены */
+.clients {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
+  border-top: 1px solid var(--line-soft);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+.clients__row {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+}
+.clients__row img {
+  height: 34px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: opacity 0.2s, filter 0.2s;
+}
+.clients__row img:hover { opacity: 1; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero__foot { animation: none; }
+}
+
+@media (max-width: 900px) {
+  .chap--hero { padding-top: 5.5rem; }
+  .hero__title { font-size: clamp(2.1rem, 8.5vw, 3rem); }
+  .densities { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .densities__item { min-width: 7rem; }
+  .chap--foot { padding-bottom: 3rem; }
+}

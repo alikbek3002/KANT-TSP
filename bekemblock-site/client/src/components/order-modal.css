@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: var(--gut);
+}
+
+.modal__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 35, 44, 0.42);
+  backdrop-filter: blur(4px);
+  border: 0;
+  cursor: pointer;
+}
+
+.modal__panel {
+  position: relative;
+  width: min(100%, 440px);
+  background: var(--surface);
+  box-shadow: var(--shadow-panel);
+  border: 1px solid var(--line);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.modal__panel h2 { font-size: var(--step-2); }
+.modal__lede { font-size: var(--step-0); }
+
+.modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: 0;
+  color: var(--dim);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal__close:hover { color: var(--text); }

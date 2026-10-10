@@ -1,0 +1,9 @@
+# В репозиторий идёт только код сайта, остальное — локально
+/*
+!/.gitignore
+!/bekemblock-site/
+
+.DS_Store
+.env
+.env.*
+!.env.example

@@ -1,0 +1,82 @@
+/* Каталог живёт по тем же правилам, что и главная: сцена закреплена, главы
+   проходят мимо. Текста в потоке минимум — характеристики на выносках. */
+.cat-track { position: relative; z-index: 2; pointer-events: none; }
+
+.cat-chap {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* низ главы держим выше телеметрии и рейки; шапка липкая и добавляет 68px сверху */
+  padding: 6rem var(--gut) 7.5rem;
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+
+.cat-head {
+  pointer-events: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  /* заголовок главы стоит слева под шапкой — хлебные крошки и лид уходим правее */
+  margin-left: auto;
+  width: min(100%, 34rem);
+  text-align: right;
+  align-items: flex-end;
+}
+.cat-head__lede { color: var(--muted); font-size: var(--step--1); }
+
+.cat-foot {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cat-foot__sizes { display: flex; gap: 2rem; flex-wrap: wrap; }
+.cat-foot__group { display: flex; flex-direction: column; gap: 0.5rem; }
+.cat-foot__label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dim); }
+.cat-foot .sizes { gap: 0.35rem; }
+.cat-foot .size-chip { min-width: 3.2rem; text-align: center; padding: 0.45rem 0.6rem; background: rgba(255, 255, 255, 0.7); }
+
+.cat-foot__actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.cat-table {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
+  border-top: 1px solid var(--line-soft);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+.cat-table table { margin-top: 1.25rem; }
+
+.spec-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+.spec-table th {
+  text-align: left;
+  font-weight: 400;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  padding: 0 0.8rem 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.spec-table td { padding: 0.7rem 0.8rem 0.7rem 0; border-bottom: 1px solid var(--line-soft); color: var(--muted); }
+.spec-table td:first-child a { color: var(--accent); font-weight: 500; }
+
+.sizes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.size-chip {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
+}
+.size-chip:hover { color: var(--text); }
+.size-chip.is-active { border-color: var(--accent); color: var(--accent); }
